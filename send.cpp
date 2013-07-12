@@ -8,7 +8,7 @@
 #include <stdio.h>
 
 int main(int argc, char *argv[]) {
-    
+
     /*
      output PIN is hardcoded for testing purposes
      see https://projects.drogon.net/raspberry-pi/wiringpi/pins/
@@ -16,14 +16,14 @@ int main(int argc, char *argv[]) {
      */
     int PIN = 0;
     char* systemCode = argv[1];
-    int unitCode = atoi(argv[2]);
+    char* unitCode = argv[2];
     int command  = atoi(argv[3]);
-    
+
     if (wiringPiSetup () == -1) return 1;
-	printf("sending systemCode[%s] unitCode[%i] command[%i]\n", systemCode, unitCode, command);
-	RCSwitch mySwitch = RCSwitch();
-	mySwitch.enableTransmit(PIN);
-    
+    printf("sending systemCode[%s] unitCode[%s] command[%i]\n", systemCode, unitCode, command);
+    RCSwitch mySwitch = RCSwitch();
+    mySwitch.enableTransmit(PIN);
+
     switch(command) {
         case 1:
             mySwitch.switchOn(systemCode, unitCode);
@@ -35,5 +35,5 @@ int main(int argc, char *argv[]) {
             printf("command[%i] is unsupported\n", command);
             return -1;
     }
-	return 0;
+    return 0;
 }
