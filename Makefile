@@ -5,6 +5,7 @@ send: RCSwitch.o send.o
 
 install:
 	cp send /usr/local/bin/rcswitch
+	cp srcswitch /usr/local/bin/srcswitch
 
 clean:
 	$(RM) *.o send

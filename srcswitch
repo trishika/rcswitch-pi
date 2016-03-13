@@ -1,0 +1,7 @@
+#!/bin/sh
+
+sudo gpio mode 1 out
+
+sudo gpio write 1 1
+sudo rcswitch $@
+sudo gpio write 1 0
